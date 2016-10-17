@@ -1,24 +1,17 @@
+require_relative "./updown_case_chars_string_monkey"
+
 class Bob
 
-  def get_cap_chars(string)
-    string.chars & ("A".."Z").to_a
-  end
-
-  def get_lower_chars(string)
-    string.chars & ("a".."z").to_a
-  end
-
   def hey(remark)
-    if !get_cap_chars(remark).empty? && get_lower_chars(remark).empty?
+    if remark.has_only_uppercase_chars
       "Whoa, chill out!"
-    elsif remark[-1, 1] == "?"
+    elsif remark[-1] == "?"
       "Sure."
-    elsif remark.chars - [" ", "\t", "\n"] == []
+    elsif remark.strip.empty?
       "Fine. Be that way!"
     else
       "Whatever."
     end
   end
-
 
 end
